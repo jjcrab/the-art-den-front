@@ -17,3 +17,26 @@
     transform: rotate(360deg);
   }
 }  */
+
+/* ===========================Nav===================================== */
+
+.nav {
+	text-align: center;
+	width: 90vw;
+	margin: 0 auto;
+}
+
+.navlinkdiv {
+	display: flex;
+	justify-content: space-between;
+}
+
+/* ===========================Artworks===================================== */
+.artworkImg {
+	height: 200px;
+}
+
+/* ===========================Students===================================== */
+.studentAvatarImg {
+	height: 200px;
+}
