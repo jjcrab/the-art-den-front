@@ -13,9 +13,7 @@ const Artworks = () => {
 	useEffect(() => {
 		axios(`${APIurl}/artworks/`)
 			.then((res) => {
-				console.log(res);
 				setArtworks(res.data);
-				console.log(res.data);
 			})
 			.catch(console.error);
 	}, []);

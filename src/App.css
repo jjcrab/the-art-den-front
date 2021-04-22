@@ -40,3 +40,9 @@
 .studentAvatarImg {
 	height: 200px;
 }
+
+/* ===========================ArtworkUpdateform===================================== */
+.preview-image {
+	max-height: 7rem;
+	max-width: 100%;
+}
