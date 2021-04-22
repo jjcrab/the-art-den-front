@@ -12,6 +12,7 @@ function SignUp() {
 	};
 	const [formState, setFormState] = useState(initialState);
 	const [user, setUser] = useState('');
+	const [error, setError] = useState();
 
 	const handleChange = (event) => {
 		setFormState({ ...formState, [event.target.id]: event.target.value });
@@ -31,6 +32,7 @@ function SignUp() {
 				}
 				if (error.response.data) {
 					Object.values(error.response.data).forEach((err) => console.log(err));
+					setError(Object.values(error.response.data));
 				}
 			});
 	};
@@ -75,7 +77,16 @@ function SignUp() {
 					Welcome {user}! Please login <Link to='/studentlogin'>here</Link>
 				</p>
 			) : (
-				'sign up fail'
+				''
+			)}
+			{error ? (
+				<div>
+					{error.map((err) => (
+						<p>{err}</p>
+					))}
+				</div>
+			) : (
+				''
 			)}
 		</div>
 	);
