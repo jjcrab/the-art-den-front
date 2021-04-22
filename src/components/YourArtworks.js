@@ -5,27 +5,32 @@ import APIurl from '../config';
 import Grid from './Grid';
 import Card from './Card';
 
-const Artworks = () => {
+const YourArtworks = () => {
 	const [artworks, setArtworks] = useState();
-	const token = localStorage.getItem('token');
-	console.log(token);
 
 	useEffect(() => {
-		axios(`${APIurl}/artworks/`)
+		axios({
+			url: `${APIurl}/studentartworks`,
+			method: 'GET',
+			headers: {
+				Authorization: `Token ${localStorage.getItem('token')}`,
+			},
+		})
 			.then((res) => {
-				console.log(res);
-				setArtworks(res.data);
 				console.log(res.data);
+				setArtworks(res.data);
 			})
 			.catch(console.error);
 	}, []);
 
 	if (!artworks) {
-		return <h1>Loading...</h1>;
+		return <h1>Please login to see your profile.</h1>;
 	}
 
 	return (
 		<div>
+			test
+			<p>{artworks.title}</p>
 			<Grid>
 				{artworks.map((art) => (
 					<div className='artworkLink'>
@@ -42,21 +47,7 @@ const Artworks = () => {
 					</div>
 				))}
 			</Grid>
-			<div>
-				<div className='ArtworkForm'>
-					{token ? (
-						<Link to={`/add-artwork`} className='addArtworklink'>
-							<p>Add an artwork</p>
-						</Link>
-					) : (
-						<Link to={'/studentlogin'}>
-							<p>Please login to add an artwork.</p>
-						</Link>
-					)}
-				</div>
-			</div>
 		</div>
 	);
 };
-
-export default Artworks;
+export default YourArtworks;

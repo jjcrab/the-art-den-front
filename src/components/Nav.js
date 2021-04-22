@@ -2,6 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Nav = () => {
+	const handleClick = () => {
+		localStorage.clear();
+	};
+
 	return (
 		<div className='nav'>
 			<h1>The Little Art Den</h1>
@@ -18,11 +22,17 @@ const Nav = () => {
 				<Link to='/about' className='navlink'>
 					<p>About</p>
 				</Link>
-				<Link to='/user/signup'>
+				<Link to='/studentsignup'>
 					<p>Sign up</p>
 				</Link>
-				<Link to='/user/login'>
+				<Link to='/studentlogin'>
 					<p>Log in</p>
+				</Link>
+				<Link to='/yourprofile'>
+					<p>Your profile</p>
+				</Link>
+				<Link to='/'>
+					<p onClick={handleClick}>Log out</p>
 				</Link>
 			</div>
 		</div>

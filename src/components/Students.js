@@ -11,6 +11,7 @@ const Students = () => {
 	useEffect(() => {
 		axios(`${APIurl}/students/`)
 			.then((res) => {
+				console.log(res);
 				setStudents(res.data);
 			})
 			.catch(console.error);
