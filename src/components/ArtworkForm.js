@@ -36,7 +36,7 @@ const ArtworkForm = () => {
 		const formData = new FormData(event.target);
 
 		axios({
-			url: `${APIurl}/artworks/`,
+			url: `${APIurl}/studentartworks/`,
 			method: 'POST',
 			headers: {
 				Authorization: `Token ${localStorage.getItem('token')}`,

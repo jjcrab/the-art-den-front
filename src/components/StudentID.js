@@ -4,7 +4,7 @@ import axios from 'axios';
 import APIurl from '../config';
 
 const StudentID = ({ match }) => {
-	const [student, setStudent] = useState({});
+	const [student, setStudent] = useState();
 	// const [appear, setAppear] = useState('');
 	const token = localStorage.getItem('token');
 	// const [error, setError] = useState('');
@@ -21,20 +21,20 @@ const StudentID = ({ match }) => {
 		getData();
 	}, [match.params.id]);
 
-	const handleDelete = (event) => {
-		event.preventDefault();
-		axios({
-			url: `${APIurl}/students/${match.params.id}`,
-			method: 'DELETE',
-			headers: {
-				Authorization: `Token ${localStorage.getItem('token')}`,
-			},
-		})
-			.then(() => {
-				console.log('delete');
-			})
-			.catch(console.error);
-	};
+	// const handleDelete = (event) => {
+	// 	event.preventDefault();
+	// 	axios({
+	// 		url: `${APIurl}/studentprofile/${match.params.id}`,
+	// 		method: 'DELETE',
+	// 		headers: {
+	// 			Authorization: `Token ${localStorage.getItem('token')}`,
+	// 		},
+	// 	})
+	// 		.then(() => {
+	// 			console.log('delete');
+	// 		})
+	// 		.catch(console.error);
+	// };
 
 	// const updating = (event) => {
 	// 	appear === ''
@@ -65,6 +65,10 @@ const StudentID = ({ match }) => {
 							<p>Loading image</p>
 						)}
 						<p>School: {student.school}</p>
+						<p>Graduate in: {student.graduation_year}</p>
+						<p>Personal_story:</p>
+						<p>{student.personal_story}</p>
+						<p>Contact: {student.studentuser_email}</p>
 					</div>
 				</div>
 				<div className='backLink'>
@@ -72,9 +76,9 @@ const StudentID = ({ match }) => {
 						<p>Other students</p>
 					</Link>
 				</div>
-				<button onClick={handleDelete} className={student.id}>
+				{/* <button onClick={handleDelete} className={student.id}>
 					Delete
-				</button>
+				</button> */}
 			</div>
 		</div>
 	);

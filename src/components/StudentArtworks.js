@@ -5,7 +5,7 @@ import APIurl from '../config';
 import Grid from './Grid';
 import Card from './Card';
 
-const YourArtworks = () => {
+const StudentArtworks = () => {
 	const [artworks, setArtworks] = useState();
 
 	useEffect(() => {
@@ -53,4 +53,4 @@ const YourArtworks = () => {
 		</div>
 	);
 };
-export default YourArtworks;
+export default StudentArtworks;

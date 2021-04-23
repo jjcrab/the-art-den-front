@@ -7,9 +7,10 @@ import Students from './components/Students';
 import StudentLogin from './components/StudentLogin';
 import ArtworkForm from './components/ArtworkForm';
 import ArtworkID from './components/ArtworkID';
-import YourArtworks from './components/YourArtworks';
+import StudentArtworks from './components/StudentArtworks';
 import StudentSignUp from './components/StudentSignUp';
 import StudentID from './components/StudentID';
+import StudentProfile from './components/StudentProfile';
 
 import './App.css';
 
@@ -27,9 +28,18 @@ function App() {
 				<Route path='/studentlogin' exact component={StudentLogin} />
 				<Route path='/add-artwork' exact component={ArtworkForm} />
 				<Route path='/artworks/:id' exact component={ArtworkID} />
-				<Route path='/studentprofile' exact component={YourArtworks} />
+				<Route
+					path='/studentaccount-artworks'
+					exact
+					component={StudentArtworks}
+				/>
 				<Route path='/studentsignup' exact component={StudentSignUp} />
 				<Route path='/students/:id' exact component={StudentID} />
+				<Route
+					path='/studentaccount-profile'
+					exact
+					component={StudentProfile}
+				/>
 			</main>
 			<footer></footer>
 		</div>

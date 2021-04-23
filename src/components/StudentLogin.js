@@ -49,7 +49,7 @@ function StudentLogin() {
 				<button type='submit'>Login</button>
 			</form>
 			{user ? (
-				<p>Welcome back {user}</p>
+				<p>Hello {user}</p>
 			) : (
 				<Link to={'/user/signup'}>
 					<h6>Haven't have an account yet? Sign up today.</h6>
