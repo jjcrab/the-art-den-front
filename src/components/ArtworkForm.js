@@ -51,7 +51,6 @@ const ArtworkForm = () => {
 				formRef.current.reset();
 				setResult({ success: res });
 				// console.log(result);
-				// history.push(`/artworks`);
 			})
 			.catch((error) => {
 				setResult({ error });
