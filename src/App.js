@@ -11,6 +11,7 @@ import StudentArtworks from './components/StudentArtworks';
 import StudentSignUp from './components/StudentSignUp';
 import StudentID from './components/StudentID';
 import StudentProfile from './components/StudentProfile';
+import ProfileUpdateForm from './components/ProfileUpdateForm';
 
 import './App.css';
 
@@ -39,6 +40,11 @@ function App() {
 					path='/studentaccount-profile'
 					exact
 					component={StudentProfile}
+				/>
+				<Route
+					path='/studentaccount-profile/:id'
+					exact
+					component={ProfileUpdateForm}
 				/>
 			</main>
 			<footer></footer>

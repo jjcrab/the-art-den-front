@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
 
-const ProfileForm = () => {
+const ProfileUpdateForm = ({ match }) => {
 	const history = useHistory();
 	const formRef = useRef(null);
 	const [previewImage, setPreviewImage] = useState(null);
@@ -12,29 +12,14 @@ const ProfileForm = () => {
 	const [invalidFile, setInvalidFile] = useState(false);
 	const [user, setUser] = useState(null);
 
-	useEffect(() => {
-		axios({
-			url: `${APIurl}/users/`,
-			method: 'PUT',
-			headers: {
-				Authorization: `Token ${localStorage.getItem('token')}`,
-			},
-		})
-			.then((res) => {
-				console.log(res.data);
-				setUser(res.data);
-			})
-			.catch(console.error);
-	}, []);
-
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
 		const formData = new FormData(event.target);
 
 		axios({
-			url: `${APIurl}/studentprofile/`,
-			method: 'POST',
+			url: `${APIurl}/studentprofile/{match.params.id}`,
+			method: 'PUT',
 			headers: {
 				Authorization: `Token ${localStorage.getItem('token')}`,
 			},
@@ -79,7 +64,10 @@ const ProfileForm = () => {
 	}
 	return (
 		<div>
-			<h4>Add a new artwork</h4>
+			<p>{match.params.id}</p>
+			<p>test</p>
+
+			{/* <h4>Add a new artwork</h4>
 			{user && <p className='hide'>{user[0].id}</p>}
 			<div className='createartform'>
 				<form
@@ -134,18 +122,18 @@ const ProfileForm = () => {
 						/>
 					</div>
 					<button type='submit'>Send it</button>
-				</form>
-				{/* {result?.success && (
+				</form> */}
+			{/* {result?.success && (
 					<Link to='/studentaccount-profile'>your profile.</Link>
 				)} */}
-				{result?.error && <p className='message failure'>An error occurred.</p>}
-			</div>
+			{/* {result?.error && <p className='message failure'>An error occurred.</p>}
+			</div> */}
 
-			<button variant='outline-danger' onClick={handleClick}>
+			{/* <button variant='outline-danger' onClick={handleClick}>
 				Cancel
-			</button>
+			</button> */}
 		</div>
 	);
 };
 
-export default ProfileForm;
+export default ProfileUpdateForm;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import APIurl from '../config';
 import ProfileForm from './ProfileForm';
+import { Link } from 'react-router-dom';
 
 const StudentProfile = ({ match }) => {
 	const [profile, setProfile] = useState();
@@ -63,7 +64,9 @@ const StudentProfile = ({ match }) => {
 				</div>
 			)}
 			<div>
-				<button>Update</button>
+				<Link to={`/studentaccount-profile/${profile.id}`}>
+					<button>Update</button>
+				</Link>
 			</div>
 		</div>
 	);
