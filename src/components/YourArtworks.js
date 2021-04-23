@@ -47,6 +47,9 @@ const YourArtworks = () => {
 					</div>
 				))}
 			</Grid>
+			<Link to={`/add-artwork`} className='addArtworklink'>
+				<p>Add an artwork</p>
+			</Link>
 		</div>
 	);
 };

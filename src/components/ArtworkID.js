@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
+import ArtworkUpdateForm from './ArtworkUpdateForm';
 
 const ArtworkID = ({ match }) => {
 	const [artwork, setArtwork] = useState({});
-	const [appear, setAppear] = useState('');
-	const token = localStorage.getItem('token');
-	const [error, setError] = useState('');
+	const [appear, setAppear] = useState(false);
+	// const [error, setError] = useState('');
+	const history = useHistory();
 
 	const getData = () => {
 		axios(`${APIurl}/artworks/${match.params.id}`)
@@ -24,7 +25,7 @@ const ArtworkID = ({ match }) => {
 	const handleDelete = (event) => {
 		event.preventDefault();
 		axios({
-			url: `${APIurl}/artworks/${match.params.id}`,
+			url: `${APIurl}/studentartworks/${match.params.id}/`,
 			method: 'DELETE',
 			headers: {
 				Authorization: `Token ${localStorage.getItem('token')}`,
@@ -32,16 +33,14 @@ const ArtworkID = ({ match }) => {
 		})
 			.then(() => {
 				console.log('delete');
+				history.push(`/artworks/`);
 			})
 			.catch(console.error);
 	};
 
-	// const updating = (event) => {
-	// 	appear === ''
-	// 		? setAppear(event.target.attributes.class.nodeValue)
-	// 		: setAppear('');
-	// 	error === '' ? setError(true) : setError('');
-	// };
+	const handleClick = (event) => {
+		setAppear(true);
+	};
 
 	if (!artwork) {
 		return <h1>Loading...</h1>;
@@ -49,24 +48,42 @@ const ArtworkID = ({ match }) => {
 
 	return (
 		<div className='artworkContainer'>
-			<div className='artworkInform'>
-				<div className='artworkDesc'>
-					<h1>{artwork.title}</h1>
-
-					<div className='artworkText'>
-						<p>Details</p>
-						<p>{artwork.price}</p>
-					</div>
+			<div className='artworkDesc'>
+				<h1>{artwork.title}</h1>
+				<div className='artworkText'>
+					<p>Details</p>
+					{artwork.artwork_image ? (
+						<img
+							src={artwork.artwork_image}
+							alt='artwork'
+							className='artworkid'
+						/>
+					) : (
+						<p>Loading image</p>
+					)}
+					<p>For Sale: ${artwork.price}</p>
+					<p>Publication Date: {artwork.publication_date}</p>
 				</div>
-				<div className='backLink'>
-					<Link to={'/artworks'}>
-						<p>Other Artworks</p>
-					</Link>
-				</div>
-				<button onClick={handleDelete} className={artwork.id}>
-					Delete
-				</button>
 			</div>
+			<div className='backLink'>
+				<Link to={'/artworks'}>
+					<p>Other Artworks</p>
+				</Link>
+			</div>
+			<button onClick={handleDelete} className={artwork.id}>
+				Delete
+			</button>
+			<button onClick={handleClick} className={artwork.id}>
+				Update
+			</button>
+			{appear && (
+				<ArtworkUpdateForm
+					match={match}
+					getData={getData}
+					artwork={artwork}
+					setAppear={setAppear}
+				/>
+			)}
 		</div>
 	);
 };

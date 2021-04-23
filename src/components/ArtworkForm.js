@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
 
@@ -163,7 +163,9 @@ const ArtworkForm = () => {
 							rel='noopener noreferrer'>
 							here
 						</a>{' '}
-						to see your image!
+						to see your image! See all{' '}
+						<Link to='/artworks'>other artworks.</Link> Go to{' '}
+						<Link to='/studentprofile'>your profile.</Link>
 					</p>
 				)}
 				{result?.error && <p className='message failure'>An error occurred.</p>}

@@ -27,7 +27,7 @@ function App() {
 				<Route path='/studentlogin' exact component={StudentLogin} />
 				<Route path='/add-artwork' exact component={ArtworkForm} />
 				<Route path='/artworks/:id' exact component={ArtworkID} />
-				<Route path='/yourprofile' exact component={YourArtworks} />
+				<Route path='/studentprofile' exact component={YourArtworks} />
 				<Route path='/studentsignup' exact component={StudentSignUp} />
 				<Route path='/students/:id' exact component={StudentID} />
 			</main>

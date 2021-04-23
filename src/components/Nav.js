@@ -28,7 +28,7 @@ const Nav = () => {
 				<Link to='/studentlogin'>
 					<p>Log in</p>
 				</Link>
-				<Link to='/yourprofile'>
+				<Link to='/studentprofile'>
 					<p>Your profile</p>
 				</Link>
 				<Link to='/'>

@@ -51,11 +51,20 @@ const StudentID = ({ match }) => {
 		<div className='studentContainer'>
 			<div className='studentInform'>
 				<div className='studentDesc'>
-					<h1>{student.title}</h1>
-
+					<h1>{student.name}</h1>
 					<div className='studentText'>
 						<p>Details</p>
-						<p>{student.name}</p>
+						<p>Name: {student.name}</p>
+						{student.avatar ? (
+							<img
+								src={student.avatar}
+								alt='avatar'
+								className='studentIDavatar'
+							/>
+						) : (
+							<p>Loading image</p>
+						)}
+						<p>School: {student.school}</p>
 					</div>
 				</div>
 				<div className='backLink'>
