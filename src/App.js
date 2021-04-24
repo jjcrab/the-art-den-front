@@ -1,25 +1,55 @@
-import logo from './logo.svg';
+import { Route } from 'react-router-dom';
+import Nav from './components/Nav';
+import Home from './components/Home';
+import About from './components/About';
+import Artworks from './components/Artworks';
+import Students from './components/Students';
+import StudentLogin from './components/StudentLogin';
+import ArtworkForm from './components/ArtworkForm';
+import ArtworkID from './components/ArtworkID';
+import StudentArtworks from './components/StudentArtworks';
+import StudentSignUp from './components/StudentSignUp';
+import StudentID from './components/StudentID';
+import StudentProfile from './components/StudentProfile';
+import ProfileUpdateForm from './components/ProfileUpdateForm';
+
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className='App'>
+			<header className='App-header'>
+				<Nav />
+			</header>
+			<main>
+				<Route path='/' exact component={Home} />
+				<Route path='/about' exact component={About} />
+				<Route path='/artworks' exact component={Artworks} />
+				<Route path='/students' exact component={Students} />
+				<Route path='/studentlogin' exact component={StudentLogin} />
+				<Route path='/add-artwork' exact component={ArtworkForm} />
+				<Route path='/artworks/:id' exact component={ArtworkID} />
+				<Route
+					path='/studentaccount-artworks'
+					exact
+					component={StudentArtworks}
+				/>
+				<Route path='/studentsignup' exact component={StudentSignUp} />
+				<Route path='/students/:id' exact component={StudentID} />
+				<Route
+					path='/studentaccount-profile'
+					exact
+					component={StudentProfile}
+				/>
+				<Route
+					path='/studentaccount-profile/:id'
+					exact
+					component={ProfileUpdateForm}
+				/>
+			</main>
+			<footer></footer>
+		</div>
+	);
 }
 
 export default App;
