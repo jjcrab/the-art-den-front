@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom';
-import Nav from './components/Nav';
+import Navi from './components/Navi';
 import Home from './components/Home';
 import About from './components/About';
 import Artworks from './components/Artworks';
@@ -12,6 +12,7 @@ import StudentSignUp from './components/StudentSignUp';
 import StudentID from './components/StudentID';
 import StudentProfile from './components/StudentProfile';
 import ProfileUpdateForm from './components/ProfileUpdateForm';
+// import Username from './components/Username';
 
 import './App.css';
 
@@ -19,7 +20,8 @@ function App() {
 	return (
 		<div className='App'>
 			<header className='App-header'>
-				<Nav />
+				{/* <Username /> */}
+				<Navi />
 			</header>
 			<main>
 				<Route path='/' exact component={Home} />
