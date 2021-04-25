@@ -6,7 +6,6 @@ import {
 	Dropdown,
 	DropdownButton,
 } from 'react-bootstrap';
-
 import Username from './Username';
 
 const Navi = () => {
@@ -16,7 +15,6 @@ const Navi = () => {
 	const handleClick = (event) => {
 		// event.preventDefault();
 		localStorage.clear();
-		setUsername(false);
 	};
 
 	return (
@@ -32,15 +30,15 @@ const Navi = () => {
 						<Navbar.Brand href='/' id='appname'>
 							<h2>The Little Art Den</h2>
 						</Navbar.Brand>
-						{localStorage.getItem('username') ? (
-							<Username className='hi' />
-						) : null}
+						{username ? <Username className='hi' /> : null}
 						<Dropdown className='profile-dropdown'>
 							<DropdownButton id='dropdown-customer-button' title=''>
 								<Container className='menu'>
-									<Dropdown.Item href='/studentlogin' className='ddtext'>
-										<h6 className='link-text'>Log In</h6>
-									</Dropdown.Item>
+									{!username ? (
+										<Dropdown.Item href='/studentlogin' className='ddtext'>
+											<h6 className='link-text'>Log In</h6>
+										</Dropdown.Item>
+									) : null}
 									<Dropdown.Item
 										href='/studentaccount-artworks'
 										className='ddtext'>
@@ -51,14 +49,18 @@ const Navi = () => {
 										className='ddtext'>
 										<h6 className='link-text'>Your Profile</h6>
 									</Dropdown.Item>
-									<Dropdown.Item href='/studentsignup' className='ddtext'>
-										<h6 className='link-text'>Sign Up</h6>
-									</Dropdown.Item>
-									<Dropdown.Item href='/' className='ddtext'>
-										<h6 className='link-text' onClick={handleClick}>
-											Log Out
-										</h6>
-									</Dropdown.Item>
+									{!username ? (
+										<Dropdown.Item href='/studentsignup' className='ddtext'>
+											<h6 className='link-text'>Sign Up</h6>
+										</Dropdown.Item>
+									) : null}
+									{username ? (
+										<Dropdown.Item href='/' className='ddtext'>
+											<h6 className='link-text' onClick={handleClick}>
+												Log Out
+											</h6>
+										</Dropdown.Item>
+									) : null}
 								</Container>
 							</DropdownButton>
 						</Dropdown>
@@ -73,7 +75,7 @@ const Navi = () => {
 									<h6 className='link-text'>Home</h6>
 								</Nav.Link>
 								<Nav.Link href='/artworks'>
-									<h6 className='link-text'>All Artworks</h6>
+									<h6 className='link-text'>All our Artworks</h6>
 								</Nav.Link>
 								<Nav.Link href='/students'>
 									<h6 className='link-text'>All Our Students</h6>

@@ -103,11 +103,10 @@ function StudentLogin() {
 			{username ? (
 				<p>Welcome back {username}</p>
 			) : (
-				<Link to={'/user/signup'}>
-					<h6>
-						You haven't log in yet. Haven't have an account? Sign up today.
-					</h6>
-				</Link>
+				<h6>
+					You haven't log in yet. Haven't have an account?{' '}
+					<Link to={'/studentsignup'}>Sign up</Link> today.
+				</h6>
 			)}
 			{error ? <p>The provided username or password is incorrect</p> : ''}
 		</div>
