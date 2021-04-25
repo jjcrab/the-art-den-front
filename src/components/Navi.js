@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
-// import { Link, useHistory } from 'react-router-dom';
 import {
 	Nav,
 	Navbar,
-	NavDropdown,
 	Container,
 	Dropdown,
 	DropdownButton,
 } from 'react-bootstrap';
-import { NavDropdownMenu } from 'react-bootstrap-submenu';
+
 import Username from './Username';
-import useraccount from './images/useraccount.png';
-import DropdownMenu from 'react-bootstrap/esm/DropdownMenu';
 
 const Navi = () => {
 	const [username, setUsername] = useState(localStorage.getItem('username'));
@@ -21,7 +17,6 @@ const Navi = () => {
 		// event.preventDefault();
 		localStorage.clear();
 		setUsername(false);
-		// history.push('/');np
 	};
 
 	return (
@@ -35,15 +30,14 @@ const Navi = () => {
 						expand='false'
 						fixed='top'>
 						<Navbar.Brand href='/' id='appname'>
-							<h1>The Little Art Den</h1>
+							<h2>The Little Art Den</h2>
 						</Navbar.Brand>
-
+						{localStorage.getItem('username') ? (
+							<Username className='hi' />
+						) : null}
 						<Dropdown className='profile-dropdown'>
 							<DropdownButton id='dropdown-customer-button' title=''>
 								<Container className='menu'>
-									<Dropdown.Item href='/studentsignup' className='ddtext'>
-										<h6 className='link-text'>Sign Up</h6>
-									</Dropdown.Item>
 									<Dropdown.Item href='/studentlogin' className='ddtext'>
 										<h6 className='link-text'>Log In</h6>
 									</Dropdown.Item>
@@ -56,6 +50,9 @@ const Navi = () => {
 										href='/studentaccount-profile'
 										className='ddtext'>
 										<h6 className='link-text'>Your Profile</h6>
+									</Dropdown.Item>
+									<Dropdown.Item href='/studentsignup' className='ddtext'>
+										<h6 className='link-text'>Sign Up</h6>
 									</Dropdown.Item>
 									<Dropdown.Item href='/' className='ddtext'>
 										<h6 className='link-text' onClick={handleClick}>
@@ -76,10 +73,10 @@ const Navi = () => {
 									<h6 className='link-text'>Home</h6>
 								</Nav.Link>
 								<Nav.Link href='/artworks'>
-									<h6 className='link-text'>Artworks</h6>
+									<h6 className='link-text'>All Artworks</h6>
 								</Nav.Link>
 								<Nav.Link href='/students'>
-									<h6 className='link-text'>Students</h6>
+									<h6 className='link-text'>All Our Students</h6>
 								</Nav.Link>
 								<Nav.Link href='/about'>
 									<h6 className='link-text'>About</h6>
@@ -88,13 +85,6 @@ const Navi = () => {
 						</Nav>
 					</Navbar>
 				</Container>
-			</div>
-			<div></div>
-			<div>
-				{username ? <Username /> : null}
-				{/* {/* </NavDropdownMenu> */}
-
-				{localStorage.getItem('username') ? <Username /> : null}
 			</div>
 		</div>
 	);

@@ -5,7 +5,7 @@ import ProfileForm from './ProfileForm';
 import { Link } from 'react-router-dom';
 
 const StudentProfile = ({ match }) => {
-	const [profile, setProfile] = useState();
+	const [profile, setProfile] = useState({});
 	const token = localStorage.getItem('token');
 
 	useEffect(() => {
@@ -64,7 +64,10 @@ const StudentProfile = ({ match }) => {
 				</div>
 			)}
 			<div>
-				<Link to={`/studentaccount-profile/${profile.id}`}>
+				<Link
+					to={`/studentaccount-profile/${profile.id}`}
+					profile={profile}
+					setProfile={setProfile}>
 					<button>Update</button>
 				</Link>
 			</div>

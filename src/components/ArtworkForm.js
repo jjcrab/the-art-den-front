@@ -1,34 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
 
 const ArtworkForm = () => {
-	// const initialState = {
-	// 	title: '',
-	// 	artwork_image: '',
-	// 	price: '',
-	// 	publication_date: ``,
-	// 	student_id: '3',
-	// };
 	const history = useHistory();
-	// const [artwork, setArtwork] = useState({
-	// 	title: '',
-	// 	artwork_image: '',
-	// 	price: '',
-	// 	publication_date: ``,
-	// 	student_id: '3',
-	// });
-
 	const formRef = useRef(null);
 	const [previewImage, setPreviewImage] = useState(null);
 	const [imageName, setImageName] = useState(null);
 	const [result, setResult] = useState(null);
 	const [invalidFile, setInvalidFile] = useState(false);
-
-	// const handleChange = (event) => {
-	// 	setArtwork({ ...artwork, [event.target.id]: event.target.value });
-	// };
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -119,16 +100,21 @@ const ArtworkForm = () => {
 						type='date'
 						required
 					/>
-					<label htmlFor='student_id'>Student ID</label>
+					<label htmlFor='student_id'>Profile ID</label>
 					<input
 						id='student_id'
 						name='student_id'
 						type='number'
-						placeholder='3'
+						value={localStorage.getItem('profileID')}
 						required
 					/>
 					<label htmlFor='owner'>Owner ID</label>
-					<input id='owner' name='owner' type='number' />
+					<input
+						id='owner'
+						name='owner'
+						type='number'
+						value={localStorage.getItem('userID')}
+					/>
 
 					{/* Make sure the name attribute of the file field is the same as the value passed to the multer upload method on the back end */}
 					<label htmlFor='artwork_image'>
@@ -164,61 +150,11 @@ const ArtworkForm = () => {
 						</a>{' '}
 						to see your image! See all{' '}
 						<Link to='/artworks'>other artworks.</Link> Go to{' '}
-						<Link to='/studentprofile'>your profile.</Link>
+						<Link to='/studentaccount-artworks'>your artworks.</Link>
 					</p>
 				)}
 				{result?.error && <p className='message failure'>An error occurred.</p>}
 			</div>
-			{/* <Form onSubmit={handleSubmit}>
-				<Form.Group controlId='title'>
-					<Form.Label>Title</Form.Label>
-					<Form.Control
-						type='text'
-						placeholder='title of your artwork'
-						onChange={handleChange}
-						value={artwork.title}
-					/>
-				</Form.Group>
-				<Form.Group controlId='artwork_image'>
-					<Form.Label>Upload artwork image.</Form.Label>
-					<Form.Control
-						type='text'
-						placeholder='image of your artwork'
-						onChange={handleChange}
-						value={artwork.artwork_image}></Form.Control>
-				</Form.Group>
-				<Form.Group controlId='price'>
-					<Form.Label>Price</Form.Label>
-					<Form.Control
-						type='text'
-						placeholder='$00.00'
-						onChange={handleChange}
-						value={artwork.price}
-					/>
-				</Form.Group>
-				<Form.Group controlId='publication_date'>
-					<Form.Label>Publication Date</Form.Label>
-					<Form.Control
-						type='text'
-						placeholder='0000-00-00'
-						onChange={handleChange}
-						value={artwork.publication_date}
-					/>
-				</Form.Group>
-				<Form.Group controlId='student_id'>
-					<Form.Label>Student ID</Form.Label>
-					<Form.Control
-						type='number'
-						placeholder='id'
-						onChange={handleChange}
-						value={artwork.student_id}
-					/>
-				</Form.Group>
-				<Button variant='outline-primary' type='submit'>
-					Submit
-				</Button>
-				
-			</Form> */}
 			<button variant='outline-danger' onClick={handleClick}>
 				Cancel
 			</button>

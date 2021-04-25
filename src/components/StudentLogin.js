@@ -54,20 +54,22 @@ function StudentLogin() {
 			.catch(console.error);
 	}, [token]);
 
-	// useEffect(() => {
-	// 	axios({
-	// 		url: `${APIurl}/studentprofile/`,
-	// 		method: 'GET',
-	// 		headers: {
-	// 			Authorization: `Token ${localStorage.getItem('token')}`,
-	// 		},
-	// 	})
-	// 		.then((res) => {
-	// 			console.log(res.data[0]);
-	// 			setProfileId(res.data[0].id);
-	// 		})
-	// 		.catch(console.error);
-	// }, [user]);
+	useEffect(() => {
+		axios({
+			url: `${APIurl}/studentprofile/`,
+			method: 'GET',
+			headers: {
+				Authorization: `Token ${localStorage.getItem('token')}`,
+			},
+		})
+			.then((res) => {
+				console.log(res.data[0]);
+				localStorage.setItem('profileID', res.data[0].id);
+				localStorage.setItem('userID', res.data[0].studentuser_account);
+				localStorage.setItem('email', res.data[0].studentuser_email);
+			})
+			.catch(console.error);
+	}, [token]);
 
 	// if (username) {
 	// 	localStorage.setItem('username', username);

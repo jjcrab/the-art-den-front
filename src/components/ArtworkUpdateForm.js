@@ -97,16 +97,11 @@ const ArtworkUpdateForm = ({ artwork, getData, setAppear }) => {
 						id='student_id'
 						name='student_id'
 						type='number'
-						placeholder={artwork.student_id}
+						value={artwork.student_id}
 						required
 					/>
 					<label htmlFor='owner'>Owner ID</label>
-					<input
-						id='owner'
-						name='owner'
-						type='number'
-						placeholder={artwork.owner}
-					/>
+					<input id='owner' name='owner' type='number' value={artwork.owner} />
 					<label htmlFor='artwork_image'>
 						Artwork image: {imageName && <strong>{imageName}</strong>}
 					</label>

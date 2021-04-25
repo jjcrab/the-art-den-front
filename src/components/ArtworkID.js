@@ -33,7 +33,7 @@ const ArtworkID = ({ match }) => {
 		})
 			.then(() => {
 				console.log('delete');
-				history.push(`/artworks/`);
+				history.push(`/studentaccount-artworks`);
 			})
 			.catch(console.error);
 	};
@@ -51,7 +51,6 @@ const ArtworkID = ({ match }) => {
 			<div className='artworkDesc'>
 				<h1>{artwork.title}</h1>
 				<div className='artworkText'>
-					<p>Details</p>
 					{artwork.artwork_image ? (
 						<img
 							src={artwork.artwork_image}
@@ -66,8 +65,8 @@ const ArtworkID = ({ match }) => {
 				</div>
 			</div>
 			<div className='backLink'>
-				<Link to={'/artworks'}>
-					<p>Other Artworks</p>
+				<Link to={'/studentaccount-artworks'}>
+					<p>Your other Artworks</p>
 				</Link>
 			</div>
 			<button onClick={handleDelete} className={artwork.id}>
