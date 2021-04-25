@@ -12,6 +12,7 @@ import StudentSignUp from './components/StudentSignUp';
 import StudentID from './components/StudentID';
 import StudentProfile from './components/StudentProfile';
 import ProfileUpdateForm from './components/ProfileUpdateForm';
+import 'bootstrap/dist/css/bootstrap.css';
 // import Username from './components/Username';
 
 import './App.css';

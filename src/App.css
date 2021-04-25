@@ -18,6 +18,10 @@
   }
 }  */
 
+.link-text:hover {
+	color: grey;
+}
+
 /* ===========================Home===================================== */
 .homepageBackgroundImg {
 	width: 100vw;
@@ -25,17 +29,47 @@
 
 /* ===========================Nav===================================== */
 
-.nav {
-	text-align: center;
-	width: 90vw;
-	margin: 0 auto;
+#appname {
+	margin: auto;
 }
 
-.navlinkdiv {
-	display: flex;
-	justify-content: space-between;
+.navToggle {
+	margin-right: 3vw;
+}
+.navbar {
+	height: 10vh;
 }
 
+#responsive-navbar-nav {
+	background-color: rgb(179, 226, 222);
+	padding-left: 5px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	width: 15vw;
+	margin-left: 80vw;
+}
+
+#dropdown-customer-button {
+	background-image: url(./components/images/useraccount.png);
+	background-size: 40px;
+	background-repeat: no-repeat;
+	border-color: white;
+	width: 40px;
+}
+
+.profile-dropdown {
+	width: 8vw;
+	padding: 2px;
+}
+.ddtext {
+	padding: 1rem;
+	text-align: left;
+}
+.menu {
+	margin: 0vw;
+	background-color: rgb(240, 192, 184);
+	padding: 0px;
+}
 /* ===========================Artworks===================================== */
 .artworkImg {
 	height: 200px;

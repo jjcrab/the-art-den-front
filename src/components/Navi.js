@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 // import { Link, useHistory } from 'react-router-dom';
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import {
+	Nav,
+	Navbar,
+	NavDropdown,
+	Container,
+	Dropdown,
+	DropdownButton,
+} from 'react-bootstrap';
 import { NavDropdownMenu } from 'react-bootstrap-submenu';
 import Username from './Username';
+import useraccount from './images/useraccount.png';
+import DropdownMenu from 'react-bootstrap/esm/DropdownMenu';
 
 const Navi = () => {
 	const [username, setUsername] = useState(localStorage.getItem('username'));
@@ -17,62 +26,76 @@ const Navi = () => {
 
 	return (
 		<div>
-			<Navbar bg='light' expand='lg'>
-				<Navbar.Brand href='/'>The Little Art Den</Navbar.Brand>
-				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
-				<Navbar.Collapse id='responsive-navbar-nav'>
-					<Nav className='mr-auto'>
-						<Nav.Link href='/'>
-							<h4 className='link-text'>Home</h4>
-						</Nav.Link>
-						<Nav.Link href='/artworks'>
-							<h4 className='link-text'>Artworks</h4>
-						</Nav.Link>
-						<Nav.Link href='/students'>
-							<h4 className='link-text'>Students</h4>
-						</Nav.Link>
-						<Nav.Link href='/students'>
-							<h4 className='link-text'>Students</h4>
-						</Nav.Link>
-						<Nav.Link href='/about'>
-							<h4 className='link-text'>About</h4>
-						</Nav.Link>
-						<Nav.Link href='/studentsignup'>
-							<h4 className='link-text'>Sign Up</h4>
-						</Nav.Link>
-						<Nav.Link href='/studentlogin'>
-							<h4 className='link-text'>Log In</h4>
-						</Nav.Link>
-						<Nav.Link href='/studentaccount-artworks'>
-							<h4 className='link-text'>Your Artworks</h4>
-						</Nav.Link>
-						<Nav.Link href='/studentaccount-profile'>
-							<h4 className='link-text'>Your Profile</h4>
-						</Nav.Link>
-						<Nav.Link href='/'>
-							<h4 className='link-text' onClick={handleClick}>
-								Log Out
-							</h4>
-						</Nav.Link>
-					</Nav>
-				</Navbar.Collapse>
-			</Navbar>
-			{/* <NavDropdownMenu id='collasible-nav-dropdown' title='Menu'>
-				<NavDropdown.Item href='/'>
-					<h4 className='link-text'>Home</h4>
-				</NavDropdown.Item>
-				<NavDropdown.Item href='/artworks'>
-					<h4 className='link-text'>Artworks</h4>
-				</NavDropdown.Item>
-				<NavDropdown.Item href='/students'>
-					<h4 className='link-text'>Students</h4>
-				</NavDropdown.Item>
-				<NavDropdown.Item href='/about'>
-					<h4 className='link-text'>About</h4>
-				</NavDropdown.Item> */}
+			<div className='nav'>
+				<Container className='navbar'>
+					<Navbar
+						collapseOnSelect
+						bg='light'
+						variant='light'
+						expand='false'
+						fixed='top'>
+						<Navbar.Brand href='/' id='appname'>
+							<h1>The Little Art Den</h1>
+						</Navbar.Brand>
 
-			{username ? <Username /> : null}
-			{/* </NavDropdownMenu> */}
+						<Dropdown className='profile-dropdown'>
+							<DropdownButton id='dropdown-customer-button' title=''>
+								<Container className='menu'>
+									<Dropdown.Item href='/studentsignup' className='ddtext'>
+										<h6 className='link-text'>Sign Up</h6>
+									</Dropdown.Item>
+									<Dropdown.Item href='/studentlogin' className='ddtext'>
+										<h6 className='link-text'>Log In</h6>
+									</Dropdown.Item>
+									<Dropdown.Item
+										href='/studentaccount-artworks'
+										className='ddtext'>
+										<h6 className='link-text'>Your Artworks</h6>
+									</Dropdown.Item>
+									<Dropdown.Item
+										href='/studentaccount-profile'
+										className='ddtext'>
+										<h6 className='link-text'>Your Profile</h6>
+									</Dropdown.Item>
+									<Dropdown.Item href='/' className='ddtext'>
+										<h6 className='link-text' onClick={handleClick}>
+											Log Out
+										</h6>
+									</Dropdown.Item>
+								</Container>
+							</DropdownButton>
+						</Dropdown>
+
+						<Navbar.Toggle
+							aria-controls='responsive-navbar-nav'
+							className='navToggle'
+						/>
+						<Nav className='navsub'>
+							<Navbar.Collapse id='responsive-navbar-nav'>
+								<Nav.Link href='/'>
+									<h6 className='link-text'>Home</h6>
+								</Nav.Link>
+								<Nav.Link href='/artworks'>
+									<h6 className='link-text'>Artworks</h6>
+								</Nav.Link>
+								<Nav.Link href='/students'>
+									<h6 className='link-text'>Students</h6>
+								</Nav.Link>
+								<Nav.Link href='/about'>
+									<h6 className='link-text'>About</h6>
+								</Nav.Link>
+							</Navbar.Collapse>
+						</Nav>
+					</Navbar>
+				</Container>
+			</div>
+			<div></div>
+			<div>
+				{username ? <Username /> : null}
+				{/* {/* </NavDropdownMenu> */}
+
+				{localStorage.getItem('username') ? <Username /> : null}
+			</div>
 		</div>
 	);
 };
