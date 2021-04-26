@@ -7,6 +7,7 @@ import {
 	DropdownButton,
 } from 'react-bootstrap';
 import Username from './Username';
+import artdenlogo from './images/artdenlogo.png';
 
 const Navi = () => {
 	const [username, setUsername] = useState(localStorage.getItem('username'));
@@ -28,7 +29,10 @@ const Navi = () => {
 						expand='false'
 						fixed='top'>
 						<Navbar.Brand href='/' id='appname'>
-							<h2>The Little Art Den</h2>
+							<h2>
+								<img src={artdenlogo} alt='artdenlogo' className='artdenlogo' />
+								The Little Art Den
+							</h2>
 						</Navbar.Brand>
 						{username ? <Username className='hi' /> : null}
 						<Dropdown className='profile-dropdown'>

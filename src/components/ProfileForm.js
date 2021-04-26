@@ -2,6 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
+import Form from 'react-bootstrap/Form';
+import { Col } from 'react-bootstrap/';
+import Button from 'react-bootstrap/Button';
+import Loading from './Loading';
 
 const ProfileForm = () => {
 	const history = useHistory();
@@ -77,14 +81,54 @@ const ProfileForm = () => {
 	};
 
 	if (!user) {
-		return <p>loading</p>;
+		return <Loading />;
 	}
 	return (
 		<div>
-			<h4>Add a new artwork</h4>
 			{user && <p className='hide'>{user[0].id}</p>}
 			<div className='createartform'>
-				<form
+				<Form
+					encType='multipart/form-data'
+					onSubmit={handleSubmit}
+					ref={formRef}>
+					<Form.Group controlId='name'>
+						<Form.Label>Name</Form.Label>
+						<Form.Control name='name' type='text' required />
+					</Form.Group>
+					<Form.Group controlId='school'>
+						<Form.Label>School</Form.Label>
+						<Form.Control name='school' type='text' required />
+					</Form.Group>
+					<Form.Row>
+						<Form.Group as={Col} controlId='graduation_year'>
+							<Form.Label>Graduate in</Form.Label>
+							<Form.Control
+								name='graduation_year'
+								type='number'
+								required
+								placeholder='Must between 2019-2030 '
+							/>
+						</Form.Group>
+						<Form.Group as={Col} controlId='studentuser_account'>
+							<Form.Label>User ID</Form.Label>
+							<Form.Control
+								name='studentuser_account'
+								value={user[0].id}
+								required
+							/>
+						</Form.Group>
+					</Form.Row>
+					<Form.Group controlId='personal_story'>
+						<Form.Label>Personal Story</Form.Label>
+						<Form.Control
+							name='personal_story'
+							required
+							as='textarea'
+							rows={10}
+						/>
+					</Form.Group>
+
+					{/* <form
 					encType='multipart/form-data'
 					onSubmit={handleSubmit}
 					ref={formRef}>
@@ -113,7 +157,7 @@ const ProfileForm = () => {
 						// type='number'
 						value={user[0].id}
 						required
-					/>
+					/> */}
 
 					<label htmlFor='avatar'>
 						Avatar image: {imageName && <strong>{imageName}</strong>}
@@ -135,17 +179,31 @@ const ProfileForm = () => {
 							onChange={handleFilePreview}
 						/>
 					</div>
-					<button type='submit'>Send it</button>
-				</form>
+
+					{/* <button type='submit'>Send it</button> */}
+					<Button
+						variant='outline-primary'
+						type='submit'
+						className='submit-btn btn'>
+						Submit
+					</Button>
+					<Button
+						variant='outline-secondary'
+						onClick={handleClick}
+						className='cancel-btn btn'>
+						Cancel
+					</Button>
+				</Form>
+				{/* </form> */}
 				{result?.success && (
 					<Link to='/studentaccount-profile'>See your profile.</Link>
 				)}
 				{result?.error && <p className='message failure'>An error occurred.</p>}
 			</div>
 
-			<button variant='outline-danger' onClick={handleClick}>
+			{/* <button variant='outline-danger' onClick={handleClick}>
 				Cancel
-			</button>
+			</button> */}
 		</div>
 	);
 };

@@ -2,6 +2,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { Col } from 'react-bootstrap/';
 
 const ArtworkForm = () => {
 	const history = useHistory();
@@ -44,6 +47,7 @@ const ArtworkForm = () => {
 		history.push(`/studentaccount-artworks`);
 	};
 
+	// Reference:https://git.generalassemb.ly/jmeade11/express-s3-uploads#front-end-code
 	const handleFilePreview = (event) => {
 		// When you select a single file with a file input
 		// you can access the file via event.target.files[0]
@@ -79,42 +83,96 @@ const ArtworkForm = () => {
 		<div>
 			<h4>Add a new artwork</h4>
 			<div className='createartform'>
-				<form
+				<Form
 					encType='multipart/form-data'
 					onSubmit={handleSubmit}
 					ref={formRef}>
-					<label htmlFor='title'>Title</label>
-					<input id='title' name='title' type='text' required />
-					<label htmlFor='price'>Price</label>
-					<input
-						id='price'
-						name='price'
-						type='text'
-						placeholder='$00.00'
-						required
-					/>
-					<label htmlFor='publication_date'>Publication Date</label>
-					<input
-						id='publication_date'
-						name='publication_date'
-						type='date'
-						required
-					/>
-					<label htmlFor='student_id'>Profile ID</label>
-					<input
-						id='student_id'
-						name='student_id'
-						type='number'
-						value={localStorage.getItem('profileID')}
-						required
-					/>
-					<label htmlFor='owner'>Owner ID</label>
-					<input
-						id='owner'
-						name='owner'
-						type='number'
-						value={localStorage.getItem('userID')}
-					/>
+					<Form.Group controlId='title'>
+						<Form.Label>Title</Form.Label>
+						<Form.Control
+							type='text'
+							placeholder='title of your artwork'
+							name='title'
+							required
+						/>
+					</Form.Group>
+					<Form.Row>
+						<Form.Group as={Col} controlId='price'>
+							<Form.Label>Price</Form.Label>
+							<Form.Control
+								type='text'
+								placeholder='$00.00'
+								name='price'
+								required
+							/>
+						</Form.Group>
+						<Form.Group as={Col} controlId='publication_date'>
+							<Form.Label>Publication Date</Form.Label>
+							<Form.Control
+								type='date'
+								placeholder='$00.00'
+								name='publication_date'
+								required
+							/>
+						</Form.Group>
+					</Form.Row>
+					<Form.Row>
+						<Form.Group as={Col} controlId='student_id'>
+							<Form.Label>Profile ID</Form.Label>
+							<Form.Control
+								name='student_id'
+								type='number'
+								value={localStorage.getItem('profileID')}
+								required
+							/>
+						</Form.Group>
+						<Form.Group as={Col} controlId='owner'>
+							<Form.Label>User ID</Form.Label>
+							<Form.Control
+								name='owner'
+								type='number'
+								value={localStorage.getItem('userID')}
+								required
+							/>
+						</Form.Group>
+					</Form.Row>
+
+					{/* <form
+						encType='multipart/form-data'
+						onSubmit={handleSubmit}
+						ref={formRef}>
+						<label htmlFor='title'>Title</label>
+						<input id='title' name='title' type='text' required />
+						<label htmlFor='price'>Price</label>
+						<input
+							id='price'
+							name='price'
+							type='text'
+							placeholder='$00.00'
+							required
+						/>
+						<label htmlFor='publication_date'>Publication Date</label>
+						<input
+							id='publication_date'
+							name='publication_date'
+							type='date'
+							required
+						/>
+						<label htmlFor='student_id'>Profile ID</label>
+						<input
+							id='student_id'
+							name='student_id'
+							type='number'
+							value={localStorage.getItem('profileID')}
+							required
+						/>
+						<label htmlFor='owner'>Owner ID</label>
+						<input
+							id='owner'
+							name='owner'
+							type='number'
+							value={localStorage.getItem('userID')}
+						/> */}
 
 					{/* Make sure the name attribute of the file field is the same as the value passed to the multer upload method on the back end */}
 					<label htmlFor='artwork_image'>
@@ -137,8 +195,20 @@ const ArtworkForm = () => {
 							onChange={handleFilePreview}
 						/>
 					</div>
-					<button type='submit'>Send it</button>
-				</form>
+					<Button
+						variant='outline-primary'
+						type='submit'
+						className='submit-btn btn'>
+						Submit
+					</Button>
+					<Button
+						variant='outline-secondary'
+						onClick={handleClick}
+						className='cancel-btn btn'>
+						Cancel
+					</Button>
+					{/* </form>  */}
+				</Form>
 				{result?.success && (
 					<p className='message success'>
 						Click{' '}
@@ -155,9 +225,6 @@ const ArtworkForm = () => {
 				)}
 				{result?.error && <p className='message failure'>An error occurred.</p>}
 			</div>
-			<button variant='outline-danger' onClick={handleClick}>
-				Cancel
-			</button>
 		</div>
 	);
 };

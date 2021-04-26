@@ -22,10 +22,7 @@ function Copyright() {
 	return (
 		<Typography variant='body2' color='textSecondary' align='center'>
 			{'Copyright © '}
-			<Link color='inherit' href='https://material-ui.com/'>
-				The Little Art Den
-			</Link>{' '}
-			{new Date().getFullYear()}
+			<Link href='/'>The Little Art Den</Link> {new Date().getFullYear()}
 			{'.'}
 		</Typography>
 	);
@@ -146,8 +143,11 @@ function StudentLogin() {
 				<Grid item xs={false} sm={4} md={7} className={classes.image} />
 
 				{token && username ? (
-					<div>
-						<h4>Hello {username}!</h4>
+					<div className='login-message'>
+						<h2>Hello {username}!</h2>
+						<Link href={'/artworks'} variant='body2'>
+							<h6>Check all our artworks.</h6>
+						</Link>
 						<Link href={'/'} variant='body2' onClick={handleClick}>
 							{'Log out'}
 						</Link>

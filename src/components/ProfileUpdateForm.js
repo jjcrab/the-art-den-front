@@ -3,6 +3,9 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
 import Loading from './Loading';
+import Form from 'react-bootstrap/Form';
+import { Col } from 'react-bootstrap/';
+import Button from 'react-bootstrap/Button';
 
 const ProfileUpdateForm = (match) => {
 	const history = useHistory();
@@ -83,7 +86,58 @@ const ProfileUpdateForm = (match) => {
 			<h4>Update Your Profile</h4>
 			{profile && (
 				<div className='createartform'>
-					<form
+					<Form
+						encType='multipart/form-data'
+						onSubmit={handleSubmit}
+						ref={formRef}>
+						<Form.Group controlId='name'>
+							<Form.Label>Name</Form.Label>
+							<Form.Control
+								name='name'
+								type='text'
+								placeholder={profile.name}
+								required
+							/>
+						</Form.Group>
+						<Form.Group controlId='school'>
+							<Form.Label>School</Form.Label>
+							<Form.Control
+								name='school'
+								type='text'
+								required
+								placeholder={profile.school}
+							/>
+						</Form.Group>
+						<Form.Row>
+							<Form.Group as={Col} controlId='graduation_year'>
+								<Form.Label>Graduate in</Form.Label>
+								<Form.Control
+									name='graduation_year'
+									type='number'
+									required
+									placeholder={profile.graduation_year}
+								/>
+							</Form.Group>
+							<Form.Group as={Col} controlId='studentuser_account'>
+								<Form.Label>User ID</Form.Label>
+								<Form.Control
+									name='studentuser_account'
+									value={profile.id}
+									required
+								/>
+							</Form.Group>
+						</Form.Row>
+						<Form.Group controlId='personal_story'>
+							<Form.Label>Personal Story</Form.Label>
+							<Form.Control
+								name='personal_story'
+								required
+								as='textarea'
+								rows={10}
+								placeholder={profile.personal_story}
+							/>
+						</Form.Group>
+						{/* <form
 						encType='multipart/form-data'
 						onSubmit={handleSubmit}
 						ref={formRef}>
@@ -125,8 +179,7 @@ const ProfileUpdateForm = (match) => {
 							name='studentuser_account'
 							value={profile.id}
 							required
-						/>
-
+						/> */}
 						<label htmlFor='avatar'>
 							Avatar image: {imageName && <strong>{imageName}</strong>}
 						</label>
@@ -149,8 +202,20 @@ const ProfileUpdateForm = (match) => {
 								onChange={handleFilePreview}
 							/>
 						</div>
-						<button type='submit'>Send it</button>
-					</form>
+						<Button
+							variant='outline-primary'
+							type='submit'
+							className='submit-btn btn'>
+							Submit
+						</Button>
+						<Button
+							variant='outline-secondary'
+							onClick={handleClick}
+							className='cancel-btn btn'>
+							Cancel
+						</Button>
+						{/* </form> */}
+					</Form>
 					{/* {result?.success && (
 					<Link to='/studentaccount-profile'>your profile.</Link>
 				)} */}
@@ -159,9 +224,6 @@ const ProfileUpdateForm = (match) => {
 					)}
 				</div>
 			)}
-			<button variant='outline-danger' onClick={handleClick}>
-				Cancel
-			</button>
 		</div>
 	);
 };

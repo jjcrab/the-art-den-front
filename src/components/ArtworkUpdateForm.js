@@ -2,6 +2,9 @@ import React, { useState, useRef } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import { Col } from 'react-bootstrap/';
 
 const ArtworkUpdateForm = ({ artwork, getData, setAppear }) => {
 	const history = useHistory();
@@ -65,7 +68,61 @@ const ArtworkUpdateForm = ({ artwork, getData, setAppear }) => {
 		<div>
 			<h4>Update the artwork</h4>
 			<div className='updateartform'>
-				<form
+				<Form
+					encType='multipart/form-data'
+					onSubmit={handleSubmit}
+					ref={formRef}>
+					<Form.Group controlId='title'>
+						<Form.Label>Title</Form.Label>
+						<Form.Control
+							type='text'
+							placeholder={artwork.title}
+							name='title'
+							required
+						/>
+					</Form.Group>
+					<Form.Row>
+						<Form.Group as={Col} controlId='price'>
+							<Form.Label>Price</Form.Label>
+							<Form.Control
+								type='text'
+								placeholder={artwork.price}
+								name='price'
+								required
+							/>
+						</Form.Group>
+						<Form.Group as={Col} controlId='publication_date'>
+							<Form.Label>Publication Date</Form.Label>
+							<Form.Control
+								type='date'
+								placeholder='$00.00'
+								name='publication_date'
+								required
+							/>
+						</Form.Group>
+					</Form.Row>
+					<Form.Row>
+						<Form.Group as={Col} controlId='student_id'>
+							<Form.Label>Profile ID</Form.Label>
+							<Form.Control
+								name='student_id'
+								type='number'
+								value={artwork.student_id}
+								required
+							/>
+						</Form.Group>
+						<Form.Group as={Col} controlId='owner'>
+							<Form.Label>User ID</Form.Label>
+							<Form.Control
+								name='owner'
+								type='number'
+								value={artwork.owner}
+								required
+							/>
+						</Form.Group>
+					</Form.Row>
+
+					{/* <form
 					encType='multipart/form-data'
 					onSubmit={handleSubmit}
 					ref={formRef}>
@@ -101,7 +158,7 @@ const ArtworkUpdateForm = ({ artwork, getData, setAppear }) => {
 						required
 					/>
 					<label htmlFor='owner'>Owner ID</label>
-					<input id='owner' name='owner' type='number' value={artwork.owner} />
+					<input id='owner' name='owner' type='number' value={artwork.owner} /> */}
 					<label htmlFor='artwork_image'>
 						Artwork image: {imageName && <strong>{imageName}</strong>}
 					</label>
@@ -122,13 +179,22 @@ const ArtworkUpdateForm = ({ artwork, getData, setAppear }) => {
 							onChange={handleFilePreview}
 						/>
 					</div>
-					<button type='submit'>Send it</button>
-				</form>
+					<Button
+						variant='outline-primary'
+						type='submit'
+						className='submit-btn btn'>
+						Submit
+					</Button>
+					<Button
+						variant='outline-secondary'
+						onClick={handleClick}
+						className='cancel-btn btn'>
+						Cancel
+					</Button>
+					{/* </form> */}
+				</Form>
 				{result?.error && <p className='message failure'>An error occurred.</p>}
 			</div>
-			<button variant='outline-danger' onClick={handleClick}>
-				Cancel
-			</button>
 		</div>
 	);
 };

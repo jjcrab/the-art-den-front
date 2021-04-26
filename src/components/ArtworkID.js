@@ -4,6 +4,7 @@ import axios from 'axios';
 import APIurl from '../config';
 import ArtworkUpdateForm from './ArtworkUpdateForm';
 import Loading from './Loading';
+import Button from 'react-bootstrap/Button';
 
 const ArtworkID = ({ match }) => {
 	const [artwork, setArtwork] = useState({});
@@ -70,12 +71,25 @@ const ArtworkID = ({ match }) => {
 					<p>Your other Artworks</p>
 				</Link>
 			</div>
-			<button onClick={handleDelete} className={artwork.id}>
+			{/* <button onClick={handleDelete} className={artwork.id}>
 				Delete
-			</button>
-			<button onClick={handleClick} className={artwork.id}>
+			</button> */}
+			{/* <button onClick={handleClick} className={artwork.id}>
 				Update
-			</button>
+			</button> */}
+			<Button
+				variant='outline-success'
+				onClick={handleClick}
+				className='update-btn btn'>
+				Update
+			</Button>
+			<Button
+				variant='outline-danger'
+				type='submit'
+				className='delete-btn btn'
+				onClick={handleDelete}>
+				Delete
+			</Button>
 			{appear && (
 				<ArtworkUpdateForm
 					match={match}

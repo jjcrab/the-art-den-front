@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
+import Loading from './Loading';
 
 const StudentID = ({ match }) => {
 	const [student, setStudent] = useState();
@@ -44,7 +45,7 @@ const StudentID = ({ match }) => {
 	// };
 
 	if (!student) {
-		return <h1>Loading...</h1>;
+		return <Loading />;
 	}
 
 	return (

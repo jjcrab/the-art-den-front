@@ -49,6 +49,12 @@ const StudentArtworks = () => {
 
 	return (
 		<div>
+			<div>
+				<Link to={`/add-artwork`} className='addArtworklink link-text'>
+					<h5>Add an artwork</h5>
+				</Link>
+			</div>
+
 			<p>{artworks.title}</p>
 			<Gridforlist>
 				{artworks.map((art) => (
@@ -66,9 +72,6 @@ const StudentArtworks = () => {
 					</div>
 				))}
 			</Gridforlist>
-			<Link to={`/add-artwork`} className='addArtworklink'>
-				<p>Add an artwork</p>
-			</Link>
 		</div>
 	);
 };

@@ -3,6 +3,7 @@ import axios from 'axios';
 import APIurl from '../config';
 import ProfileForm from './ProfileForm';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const StudentProfile = ({ match }) => {
 	const [profile, setProfile] = useState({});
@@ -26,9 +27,9 @@ const StudentProfile = ({ match }) => {
 	if (token && !profile) {
 		return (
 			<div>
-				<h1>
+				<h4>
 					You don't have a profile yet. Please complete your profile below
-				</h1>
+				</h4>
 				<ProfileForm />
 			</div>
 		);
@@ -68,7 +69,9 @@ const StudentProfile = ({ match }) => {
 					to={`/studentaccount-profile/${profile.id}`}
 					profile={profile}
 					setProfile={setProfile}>
-					<button>Update</button>
+					<Button variant='outline-success' className='update-btn btn'>
+						Update
+					</Button>
 				</Link>
 			</div>
 		</div>
