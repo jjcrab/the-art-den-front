@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
-import Grid from './Grid';
+import Gridforlist from './Gridforlist';
 import Card from './Card';
 
 const Students = () => {
@@ -23,7 +23,7 @@ const Students = () => {
 
 	return (
 		<div>
-			<Grid>
+			<Gridforlist>
 				{students.map((student) => (
 					<div className='studentLink'>
 						<Card>
@@ -39,7 +39,7 @@ const Students = () => {
 						</Card>
 					</div>
 				))}
-			</Grid>
+			</Gridforlist>
 		</div>
 	);
 };

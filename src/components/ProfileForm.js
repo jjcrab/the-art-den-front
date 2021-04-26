@@ -45,6 +45,8 @@ const ProfileForm = () => {
 				setPreviewImage(null);
 				formRef.current.reset();
 				setResult({ success: res });
+				localStorage.setItem('profileID', res.data.id);
+				localStorage.setItem('userID', res.data.studentuser_account);
 				history.push(`/studentaccount-profile`);
 			})
 			.catch((error) => {
@@ -135,9 +137,9 @@ const ProfileForm = () => {
 					</div>
 					<button type='submit'>Send it</button>
 				</form>
-				{/* {result?.success && (
-					<Link to='/studentaccount-profile'>your profile.</Link>
-				)} */}
+				{result?.success && (
+					<Link to='/studentaccount-profile'>See your profile.</Link>
+				)}
 				{result?.error && <p className='message failure'>An error occurred.</p>}
 			</div>
 

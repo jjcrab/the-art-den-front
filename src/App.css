@@ -36,9 +36,10 @@
 
 .navToggle {
 	margin-right: 3vw;
+	background-color: white;
 }
 .navToggle:hover {
-	background-color: aqua;
+	background-color: rgb(172, 192, 230);
 }
 .navbar {
 	height: 10vh;
@@ -63,7 +64,7 @@
 }
 
 #dropdown-customer-button:hover {
-	background-color: aqua;
+	background-color: rgb(197, 182, 230);
 }
 
 .profile-dropdown {

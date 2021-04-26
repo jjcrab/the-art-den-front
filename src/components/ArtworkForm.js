@@ -41,7 +41,7 @@ const ArtworkForm = () => {
 
 	const handleClick = (event) => {
 		event.preventDefault();
-		history.push(`/artworks`);
+		history.push(`/studentaccount-artworks`);
 	};
 
 	const handleFilePreview = (event) => {

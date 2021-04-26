@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
-import Grid from './Grid';
+import Gridforlist from './Gridforlist';
 import Card from './Card';
 
 const Artworks = () => {
@@ -24,7 +24,7 @@ const Artworks = () => {
 
 	return (
 		<div>
-			<Grid>
+			<Gridforlist>
 				{artworks.map((art) => (
 					<div className='artworkLink'>
 						<Card>
@@ -35,12 +35,13 @@ const Artworks = () => {
 									className='artworkImg'
 								/>
 								<p>{art.title}</p>
+								<p>${art.price}</p>
 							</Link>
 						</Card>
 					</div>
 				))}
-			</Grid>
-			<div>
+			</Gridforlist>
+			{/* <div>
 				<div className='ArtworkForm'>
 					{token ? (
 						<Link to={`/add-artwork`} className='addArtworklink'>
@@ -52,7 +53,7 @@ const Artworks = () => {
 						</Link>
 					)}
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };

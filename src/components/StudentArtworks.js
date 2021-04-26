@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
-import Grid from './Grid';
+import Gridforlist from './Gridforlist';
 import Card from './Card';
 
 const StudentArtworks = () => {
 	const [artworks, setArtworks] = useState();
+	const profileid = localStorage.getItem('profileID');
 
 	useEffect(() => {
 		axios({
@@ -24,14 +25,27 @@ const StudentArtworks = () => {
 	}, []);
 
 	if (!artworks) {
+		return <h3>Loading</h3>;
+	}
+
+	if (!localStorage.getItem('token')) {
 		return <h1>Please login to see your profile.</h1>;
+	}
+
+	if (!profileid) {
+		return (
+			<h3>
+				We want to know you more. Please complete your profile{' '}
+				<Link to='/studentaccount-profile'>here</Link> first before uploading
+				your first artwork.
+			</h3>
+		);
 	}
 
 	return (
 		<div>
-			test
 			<p>{artworks.title}</p>
-			<Grid>
+			<Gridforlist>
 				{artworks.map((art) => (
 					<div className='artworkLink'>
 						<Card>
@@ -46,7 +60,7 @@ const StudentArtworks = () => {
 						</Card>
 					</div>
 				))}
-			</Grid>
+			</Gridforlist>
 			<Link to={`/add-artwork`} className='addArtworklink'>
 				<p>Add an artwork</p>
 			</Link>
