@@ -179,6 +179,7 @@ const ArtworkUpdateForm = ({ artwork, getData, setAppear }) => {
 							onChange={handleFilePreview}
 						/>
 					</div>
+
 					<Button
 						variant='outline-primary'
 						type='submit'
@@ -191,6 +192,7 @@ const ArtworkUpdateForm = ({ artwork, getData, setAppear }) => {
 						className='cancel-btn btn'>
 						Cancel
 					</Button>
+
 					{/* </form> */}
 				</Form>
 				{result?.error && <p className='message failure'>An error occurred.</p>}

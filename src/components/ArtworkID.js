@@ -68,7 +68,7 @@ const ArtworkID = ({ match }) => {
 			</div>
 			<div className='backLink'>
 				<Link to={'/studentaccount-artworks'}>
-					<p>Your other Artworks</p>
+					<p>Your Artworks</p>
 				</Link>
 			</div>
 			{/* <button onClick={handleDelete} className={artwork.id}>
@@ -77,19 +77,23 @@ const ArtworkID = ({ match }) => {
 			{/* <button onClick={handleClick} className={artwork.id}>
 				Update
 			</button> */}
-			<Button
-				variant='outline-success'
-				onClick={handleClick}
-				className='update-btn btn'>
-				Update
-			</Button>
-			<Button
-				variant='outline-danger'
-				type='submit'
-				className='delete-btn btn'
-				onClick={handleDelete}>
-				Delete
-			</Button>
+			{localStorage.getItem('userID') === artwork.owner ? (
+				<div>
+					<Button
+						variant='outline-success'
+						onClick={handleClick}
+						className='update-btn btn'>
+						Update
+					</Button>
+					<Button
+						variant='outline-danger'
+						type='submit'
+						className='delete-btn btn'
+						onClick={handleDelete}>
+						Delete
+					</Button>
+				</div>
+			) : null}
 			{appear && (
 				<ArtworkUpdateForm
 					match={match}
