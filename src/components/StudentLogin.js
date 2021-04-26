@@ -147,7 +147,7 @@ function StudentLogin() {
 
 				{token && username ? (
 					<div>
-						<h4>Welcome back {username}!</h4>
+						<h4>Hello {username}!</h4>
 						<Link href={'/'} variant='body2' onClick={handleClick}>
 							{'Log out'}
 						</Link>
