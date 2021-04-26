@@ -34,7 +34,11 @@ const StudentArtworks = () => {
 	}
 
 	if (!localStorage.getItem('token')) {
-		return <h1>Please login to see your artworks.</h1>;
+		return (
+			<div className='containerlogin'>
+				<h3>Please login to see your artworks.</h3>
+			</div>
+		);
 	}
 
 	if (!profileid) {

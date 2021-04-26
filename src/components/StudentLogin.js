@@ -87,13 +87,6 @@ function StudentLogin() {
 				localStorage.setItem('token', data.auth_token);
 				setFormState(initialState);
 			})
-			// .then(() => {
-			// 	setUser(formState.email);
-			// 	localStorage.setItem('email', formState.email);
-
-			// 	localStorage.setLogin('login', login);
-			// 	setFormState(initialState);
-			// })
 			.catch(() => setError(true));
 	};
 

@@ -36,7 +36,11 @@ const StudentProfile = ({ match }) => {
 	}
 
 	if (!token) {
-		return <h1>Please login to see your profile.</h1>;
+		return (
+			<div className='containerlogin'>
+				<h3>Please login to see your profile.</h3>
+			</div>
+		);
 	}
 
 	return (
