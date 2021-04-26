@@ -86,7 +86,7 @@ const ProfileForm = () => {
 	return (
 		<div>
 			{user && <p className='hide'>{user[0].id}</p>}
-			<div className='createartform'>
+			<div className='form'>
 				<Form
 					encType='multipart/form-data'
 					onSubmit={handleSubmit}

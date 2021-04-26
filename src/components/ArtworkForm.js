@@ -82,7 +82,7 @@ const ArtworkForm = () => {
 	return (
 		<div>
 			<h4>Add a new artwork</h4>
-			<div className='createartform'>
+			<div className='form'>
 				<Form
 					encType='multipart/form-data'
 					onSubmit={handleSubmit}

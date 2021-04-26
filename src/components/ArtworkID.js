@@ -51,7 +51,7 @@ const ArtworkID = ({ match }) => {
 	return (
 		<div className='artworkContainer'>
 			<div className='artworkDesc'>
-				<h1>{artwork.title}</h1>
+				<h3>{artwork.title}</h3>
 				<div className='artworkText'>
 					{artwork.artwork_image ? (
 						<img

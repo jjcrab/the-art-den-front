@@ -67,7 +67,7 @@ const ArtworkUpdateForm = ({ artwork, getData, setAppear }) => {
 	return (
 		<div>
 			<h4>Update the artwork</h4>
-			<div className='updateartform'>
+			<div className='form'>
 				<Form
 					encType='multipart/form-data'
 					onSubmit={handleSubmit}

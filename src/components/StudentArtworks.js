@@ -49,11 +49,11 @@ const StudentArtworks = () => {
 
 	return (
 		<div>
-			<div>
-				<Link to={`/add-artwork`} className='addArtworklink link-text'>
+			<Link to='/add-artwork'>
+				<div className='addArtworklink link-text'>
 					<h5>Add an artwork</h5>
-				</Link>
-			</div>
+				</div>
+			</Link>
 
 			<p>{artworks.title}</p>
 			<Gridforlist>

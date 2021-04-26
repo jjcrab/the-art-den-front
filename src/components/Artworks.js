@@ -25,24 +25,25 @@ const Artworks = () => {
 
 	return (
 		<div>
-			<Gridforlist>
-				{artworks.map((art) => (
-					<div className='artworkLink'>
-						<Card>
-							<Link to={`/artworks/${art.id}`}>
-								<img
-									src={art.artwork_image}
-									alt='artwork'
-									className='artworkImg'
-								/>
-								<p>{art.title}</p>
-								<p>${art.price}</p>
-							</Link>
-						</Card>
-					</div>
-				))}
-			</Gridforlist>
-			{/* <div>
+			<div className='grid'>
+				<Gridforlist>
+					{artworks.map((art) => (
+						<div className='artworkLink'>
+							<Card>
+								<Link to={`/artworks/${art.id}`}>
+									<img
+										src={art.artwork_image}
+										alt='artwork'
+										className='artworkImg'
+									/>
+									<p>{art.title}</p>
+									<p>${art.price}</p>
+								</Link>
+							</Card>
+						</div>
+					))}
+				</Gridforlist>
+				{/* <div>
 				<div className='ArtworkForm'>
 					{token ? (
 						<Link to={`/add-artwork`} className='addArtworklink'>
@@ -55,6 +56,7 @@ const Artworks = () => {
 					)}
 				</div>
 			</div> */}
+			</div>
 		</div>
 	);
 };

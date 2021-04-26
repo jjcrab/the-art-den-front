@@ -2,7 +2,7 @@
 	text-align: center;
 	margin: 5vh auto;
 	width: 95%;
-	height: 90vh;
+	/* height: 90vh; */
 	background: white;
 	display: flex;
 	flex-direction: column;
@@ -103,6 +103,10 @@
 	height: 200px;
 }
 
+.grid {
+	margin-top: 1rem;
+}
+
 /* ===========================ArtworkID===================================== */
 .artworkid {
 	max-height: 20rem;
@@ -116,7 +120,7 @@
 
 /* ===========================StudentsID===================================== */
 .studentIDavatar {
-	max-height: 20rem;
+	max-height: 10rem;
 	max-width: 100%;
 }
 
@@ -298,6 +302,11 @@
 	color: white;
 }
 
+.form {
+	width: 80vw;
+	margin: auto;
+}
+
 /* ==============================buttons and links================================= */
 
 .submit-btn,
@@ -318,6 +327,11 @@
 .login-message {
 	/* background-color: red; */
 	/* width: 100%; */
+	margin: auto;
+}
+.addArtworklink {
+	padding-top: 4rem;
+	width: 30vw;
 	margin: auto;
 }
 

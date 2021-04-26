@@ -43,10 +43,8 @@ const StudentProfile = ({ match }) => {
 		<div className='profileContainer'>
 			{profile && (
 				<div className='profileInform'>
-					<h1>{profile.name}</h1>
+					<h3>{profile.name}</h3>
 					<div className='profileText'>
-						<p>Details</p>
-						<p>Name: {profile.name}</p>
 						{profile.avatar ? (
 							<img
 								src={profile.avatar}

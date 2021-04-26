@@ -76,15 +76,7 @@ function SignUp() {
 				setFormState(initialState);
 				history.push('/studentlogin');
 			})
-			.catch((error) => {
-				if (error.response) {
-					console.log(error.response.statusText);
-				}
-				if (error.response.data) {
-					Object.values(error.response.data).forEach((err) => console.log(err));
-					setError(Object.values(error.response.data));
-				}
-			});
+			.catch(console.error);
 	};
 
 	return (

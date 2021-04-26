@@ -85,7 +85,7 @@ const ProfileUpdateForm = (match) => {
 		<div>
 			<h4>Update Your Profile</h4>
 			{profile && (
-				<div className='createartform'>
+				<div className='form'>
 					<Form
 						encType='multipart/form-data'
 						onSubmit={handleSubmit}

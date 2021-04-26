@@ -52,10 +52,8 @@ const StudentID = ({ match }) => {
 		<div className='studentContainer'>
 			<div className='studentInform'>
 				<div className='studentDesc'>
-					<h1>{student.name}</h1>
+					<h3>{student.name}</h3>
 					<div className='studentText'>
-						<p>Details</p>
-						<p>Name: {student.name}</p>
 						{student.avatar ? (
 							<img
 								src={student.avatar}
