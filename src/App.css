@@ -1,6 +1,38 @@
+.App {
+	text-align: center;
+	margin: 5vh auto;
+	width: 95%;
+	height: 90vh;
+	background: white;
+	display: flex;
+	flex-direction: column;
+}
+
+.App-header {
+	height: 10vh;
+	background-color: rgb(16, 125, 214);
+}
+
+.App main {
+	height: 85vh;
+	/* background-color: red; */
+}
+
 /* ===========================Home===================================== */
-.homepageBackgroundImg {
-	width: 100vw;
+.home {
+	background-image: url('/src/components/images/background.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 100%;
+}
+
+.hometext {
+	/* background-color: red; */
+	width: 40%;
+	margin-left: 3rem;
+	padding-top: 15vh;
+	text-align: left;
 }
 
 /* ===========================Nav===================================== */
@@ -181,61 +213,6 @@
 
 /* ========================Artwork and Profile Upload form==================================== */
 /* ========Reference: https://git.generalassemb.ly/jmeade11/express-s3-uploads#front-end-code==================== */
-/* *,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-
-a {
-	color: inherit;
-}
-
-button,
-.btn {
-	background-color: #9e54bd;
-	border-radius: 30px;
-	border: 3px solid #823aa0;
-	color: #fff;
-	cursor: pointer;
-	display: inline-block;
-	font-family: inherit;
-	font-size: inherit;
-	font-weight: 700;
-	letter-spacing: 1px;
-	outline: none;
-	overflow: hidden;
-	padding: 1rem 3rem;
-	position: relative;
-	text-transform: uppercase;
-	transition: background-color 0.3s;
-}
-
-button:hover {
-	background-color: #823aa0;
-}
-
-button[type='submit'] {
-	display: block;
-	margin: 1rem auto;
-}
-
-form {
-	width: 100%;
-}
-
-input[type='text'] {
-	border: 3px solid #823aa0;
-	font-family: inherit;
-	font-size: inherit;
-	padding: 1rem;
-	width: 100%;
-}
-
-label {
-	display: block;
-	margin: 1rem 0;
-} */
 
 .file-upload {
 	align-items: center;
@@ -312,16 +289,6 @@ label {
 	color: green;
 }
 
-/* .profile {
-	border: 1px solid #823aa0;
-	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.05);
-	color: #823aa0;
-	padding: 1rem;
-	margin: 1rem auto;
-	padding: 1rem;
-	max-width: 350px;
-} */
-
 .preview-image {
 	max-height: 7rem;
 	max-width: 100%;
@@ -352,4 +319,13 @@ label {
 	/* background-color: red; */
 	/* width: 100%; */
 	margin: auto;
+}
+
+/* ===========================Footer===================================== */
+.footerlogo {
+	width: 30px;
+}
+.footer {
+	display: flex;
+	justify-content: space-evenly;
 }

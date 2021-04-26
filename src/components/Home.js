@@ -1,15 +1,19 @@
 import React from 'react';
-import background from './images/background.jpg';
 
 const Home = () => {
 	return (
 		<div className='home'>
-			<p>Welcome to The Little Art Den (TLAD)! Best wishes to your journey!</p>
-			<img
-				src={background}
-				alt='background'
-				className='homepageBackgroundImg'
-			/>
+			<div className='hometext'>
+				<h6>Welcome to The Little Art Den (TLAD)! </h6>
+				<br></br>
+				<p>
+					This is a community for all those aspiring art students to show their
+					talents, and it is an exhibit for those art enthusiasts to find that
+					perfect piece to hang in their home. Let's enjoy the unique and
+					original artworks and support the youngs for their early artistic
+					journey.
+				</p>
+			</div>
 		</div>
 	);
 };

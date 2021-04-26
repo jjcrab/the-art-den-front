@@ -13,6 +13,7 @@ import StudentID from './components/StudentID';
 import StudentProfile from './components/StudentProfile';
 import ProfileUpdateForm from './components/ProfileUpdateForm';
 import 'bootstrap/dist/css/bootstrap.css';
+import Footer from './components/Footer';
 // import Username from './components/Username';
 
 import './App.css';
@@ -50,7 +51,9 @@ function App() {
 					component={ProfileUpdateForm}
 				/>
 			</main>
-			<footer></footer>
+			<footer>
+				<Footer />
+			</footer>
 		</div>
 	);
 }
