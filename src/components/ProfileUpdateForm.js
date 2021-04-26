@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
+import Loading from './Loading';
 
 const ProfileUpdateForm = (match) => {
 	const history = useHistory();
@@ -75,7 +76,7 @@ const ProfileUpdateForm = (match) => {
 	};
 
 	if (!profile) {
-		return <p>loading</p>;
+		return <Loading />;
 	}
 	return (
 		<div>

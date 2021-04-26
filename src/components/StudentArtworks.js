@@ -4,6 +4,7 @@ import axios from 'axios';
 import APIurl from '../config';
 import Gridforlist from './Gridforlist';
 import Card from './Card';
+import Loading from './Loading';
 
 const StudentArtworks = () => {
 	const [artworks, setArtworks] = useState();
@@ -24,12 +25,16 @@ const StudentArtworks = () => {
 			.catch(console.error);
 	}, []);
 
-	if (!artworks) {
-		return <h3>Loading</h3>;
+	if (localStorage.getItem('token') && !artworks) {
+		return (
+			<div>
+				<Loading />
+			</div>
+		);
 	}
 
 	if (!localStorage.getItem('token')) {
-		return <h1>Please login to see your profile.</h1>;
+		return <h1>Please login to see your artworks.</h1>;
 	}
 
 	if (!profileid) {

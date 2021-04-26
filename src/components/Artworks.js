@@ -4,6 +4,7 @@ import axios from 'axios';
 import APIurl from '../config';
 import Gridforlist from './Gridforlist';
 import Card from './Card';
+import Loading from './Loading';
 
 const Artworks = () => {
 	const [artworks, setArtworks] = useState();
@@ -19,7 +20,7 @@ const Artworks = () => {
 	}, []);
 
 	if (!artworks) {
-		return <h1>Loading...</h1>;
+		return <Loading />;
 	}
 
 	return (

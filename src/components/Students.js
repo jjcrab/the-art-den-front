@@ -4,6 +4,7 @@ import axios from 'axios';
 import APIurl from '../config';
 import Gridforlist from './Gridforlist';
 import Card from './Card';
+import Loading from './Loading';
 
 const Students = () => {
 	const [students, setStudents] = useState();
@@ -18,7 +19,7 @@ const Students = () => {
 	}, []);
 
 	if (!students) {
-		return <h1>Loading...</h1>;
+		return <Loading />;
 	}
 
 	return (

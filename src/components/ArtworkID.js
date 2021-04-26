@@ -3,6 +3,7 @@ import { useHistory, Link } from 'react-router-dom';
 import axios from 'axios';
 import APIurl from '../config';
 import ArtworkUpdateForm from './ArtworkUpdateForm';
+import Loading from './Loading';
 
 const ArtworkID = ({ match }) => {
 	const [artwork, setArtwork] = useState({});
@@ -43,7 +44,7 @@ const ArtworkID = ({ match }) => {
 	};
 
 	if (!artwork) {
-		return <h1>Loading...</h1>;
+		return <Loading />;
 	}
 
 	return (
