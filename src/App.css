@@ -9,8 +9,8 @@
 }
 
 .App-header {
-	height: 10vh;
-	background-color: rgb(16, 125, 214);
+	height: 7vh;
+	background-color: rgb(132, 182, 223);
 }
 
 .App main {
@@ -328,4 +328,87 @@
 .footer {
 	display: flex;
 	justify-content: space-evenly;
+}
+
+/* ===========================About==================================== */
+.intro {
+	display: flex;
+	height: 60vh;
+	width: 95%;
+	margin: auto;
+}
+
+.introText {
+	width: 50%;
+	text-align: left;
+	padding-top: 1.5rem;
+}
+
+.introImg {
+	width: 50%;
+	margin-top: 3rem;
+}
+
+.introImg img {
+	height: 80%;
+}
+.about {
+	padding-top: 1.5rem;
+	text-align: left;
+	padding-left: 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+	#appnameText {
+		font-size: 1.5rem;
+	}
+	.artdenlogo {
+		width: 2.5rem;
+		margin-right: 1rem;
+	}
+	.intro {
+		display: flex;
+		width: 95%;
+		margin: auto;
+		flex-direction: column;
+	}
+	.introText {
+		width: 100%;
+		text-align: left;
+		padding-top: 1.5rem;
+	}
+
+	.introImg {
+		width: 100%;
+		margin-top: 3rem;
+	}
+
+	.introImg img {
+		height: 80%;
+	}
+}
+
+@media only screen and (max-width: 375px) {
+	#appnameText {
+		font-size: 1.2rem;
+	}
+	.artdenlogo {
+		width: 1.2rem;
+		margin-right: 0.5rem;
+	}
+	#appname {
+		margin: 0;
+	}
+	#dropdown-customer-button {
+		background-size: 35px;
+		width: 35px;
+	}
+	.navToggle {
+		padding: 0px;
+		margin: 0px;
+		width: 40px;
+	}
+	.hometext {
+		padding-top: 8vh;
+	}
 }

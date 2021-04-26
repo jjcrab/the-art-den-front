@@ -29,7 +29,7 @@ const Navi = () => {
 						expand='false'
 						fixed='top'>
 						<Navbar.Brand href='/' id='appname'>
-							<h2>
+							<h2 id='appnameText'>
 								<img src={artdenlogo} alt='artdenlogo' className='artdenlogo' />
 								The Little Art Den
 							</h2>
@@ -73,8 +73,9 @@ const Navi = () => {
 							aria-controls='responsive-navbar-nav'
 							className='navToggle'
 						/>
-						<Nav className='navsub'>
-							<Navbar.Collapse id='responsive-navbar-nav'>
+
+						<Navbar.Collapse id='responsive-navbar-nav'>
+							<Nav className='navsub'>
 								<Nav.Link href='/'>
 									<h6 className='link-text'>Home</h6>
 								</Nav.Link>
@@ -87,8 +88,8 @@ const Navi = () => {
 								<Nav.Link href='/about'>
 									<h6 className='link-text'>About</h6>
 								</Nav.Link>
-							</Navbar.Collapse>
-						</Nav>
+							</Nav>
+						</Navbar.Collapse>
 					</Navbar>
 				</Container>
 			</div>
