@@ -11,6 +11,7 @@ const ArtworkID = ({ match }) => {
 	const [appear, setAppear] = useState(false);
 	// const [error, setError] = useState('');
 	const history = useHistory();
+	const profileid = localStorage.getItem('profileID');
 
 	const getData = () => {
 		axios(`${APIurl}/artworks/${match.params.id}`)
@@ -71,29 +72,26 @@ const ArtworkID = ({ match }) => {
 					<p>Your Artworks</p>
 				</Link>
 			</div>
-			{/* <button onClick={handleDelete} className={artwork.id}>
-				Delete
-			</button> */}
-			{/* <button onClick={handleClick} className={artwork.id}>
+
+			{/* {artwork.owner === profileid ? (
+				<div> */}
+			<Button
+				variant='outline-success'
+				onClick={handleClick}
+				className='update-btn btn'>
 				Update
-			</button> */}
-			{localStorage.getItem('userID') === artwork.owner ? (
-				<div>
-					<Button
-						variant='outline-success'
-						onClick={handleClick}
-						className='update-btn btn'>
-						Update
-					</Button>
-					<Button
-						variant='outline-danger'
-						type='submit'
-						className='delete-btn btn'
-						onClick={handleDelete}>
-						Delete
-					</Button>
-				</div>
-			) : null}
+			</Button>
+			<Button
+				variant='outline-danger'
+				type='submit'
+				className='delete-btn btn'
+				onClick={handleDelete}>
+				Delete
+			</Button>
+			{/* </div>
+			) : (
+				''
+			)} */}
 			{appear && (
 				<ArtworkUpdateForm
 					match={match}

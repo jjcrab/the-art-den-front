@@ -10,7 +10,7 @@ const Home = () => {
 					This is a community for all those aspiring art students to show their
 					talents, and it is an exhibit for those art enthusiasts to find that
 					perfect piece to hang in their home. Let's enjoy the unique and
-					original artworks and support the youngs for their early artistic
+					original artworks and support the youth for their early artistic
 					journey.
 				</p>
 			</div>

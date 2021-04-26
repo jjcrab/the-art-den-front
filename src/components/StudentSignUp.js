@@ -74,9 +74,17 @@ function SignUp() {
 			.then(() => {
 				setUser(formState.username);
 				setFormState(initialState);
-				history.push('/studentlogin');
+				// history.push('/studentlogin');
 			})
-			.catch(console.error);
+			.catch((error) => {
+				if (error.response) {
+					console.log(error.response.statusText);
+				}
+				if (error.response.data) {
+					Object.values(error.response.data).forEach((err) => console.log(err));
+					setError(Object.values(error.response.data));
+				}
+			});
 	};
 
 	return (
@@ -90,9 +98,9 @@ function SignUp() {
 					<Typography component='h1' variant='h5'>
 						Sign up
 					</Typography>
-					<Typography component='h7' variant='h7'>
+					{/* <Typography component='h7' variant='h7'>
 						You will be redirected to login page after you have signed up.
-					</Typography>
+					</Typography> */}
 					<form onSubmit={handleSubmit} className={classes.form} noValidate>
 						<TextField
 							autoComplete='username'
@@ -164,6 +172,13 @@ function SignUp() {
 					</form>
 				</div>
 				<Box mt={5}>
+					{user ? (
+						<p>
+							Welcome {user}! Please login <Link to='/studentlogin'>here</Link>
+						</p>
+					) : (
+						''
+					)}
 					{error ? (
 						<div>
 							{error.map((err) => (
@@ -177,56 +192,6 @@ function SignUp() {
 					<Copyright />
 				</Box>
 			</Container>
-
-			{/* ================================= */}
-			{/* <form onSubmit={handleSubmit}>
-				<label htmlFor='username'>Username:</label>
-				<input
-					id='username'
-					type='text'
-					onChange={handleChange}
-					value={formState.username}
-				/>
-				<label htmlFor='email'>Email:</label>
-				<input
-					id='email'
-					type='text'
-					onChange={handleChange}
-					value={formState.email}
-					placeholder='Must be your .edu email account.'
-				/>
-				<label htmlFor='password'>Password:</label>
-				<input
-					id='password'
-					type='password'
-					onChange={handleChange}
-					value={formState.password}
-				/>
-				<label htmlFor='re_password'>Re Password:</label>
-				<input
-					id='re_password'
-					type='password'
-					onChange={handleChange}
-					value={formState.re_password}
-				/>
-				<button type='submit'>Sign Up</button>
-			</form>
-			{user ? (
-				<p>
-					Welcome {user}! Please login <Link to='/studentlogin'>here</Link>
-				</p>
-			) : (
-				''
-			)}
-			{error ? (
-				<div>
-					{error.map((err) => (
-						<p>{err}</p>
-					))}
-				</div>
-			) : (
-				''
-			)} */}
 		</div>
 	);
 }
