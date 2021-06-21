@@ -1,6 +1,6 @@
 # The Little Art Den
 
-This is an app for art school students to show and sell their artworks. And also a place for those who wants to have unique original art without paying crazy amount of money. Hopefully this app can help art school students to collect some tuition and support their early artistic journey. 
+This is an app for art school students to show and sell their artworks. And also a place for those who want to have unique original art without paying crazy amount of money. Hopefully this app can help art school students to collect some tuition and support their early artistic journey. 
 
 ## Tech Stack
 - Frontend: React, React-Bootstrap, Material-UI
